@@ -7,3 +7,11 @@ if defined?(ActiveRecord)
   require 'lucky_sneaks/acts_as_url'
   ActiveRecord::Base.send :include, LuckySneaks::ActsAsUrl
 end
+
+if defined?(ActiveSupport::Inflector)
+  module ActiveSupport::Inflector
+    def transliterate(string)
+      string.to_ascii
+    end
+  end
+end
